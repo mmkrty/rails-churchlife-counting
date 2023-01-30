@@ -1,0 +1,2 @@
+class PrayerMeeting < ApplicationRecord
+end

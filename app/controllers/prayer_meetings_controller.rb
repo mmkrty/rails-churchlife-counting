@@ -1,0 +1,2 @@
+class PrayerMeetingsController < ApplicationController
+end
