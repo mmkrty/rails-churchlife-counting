@@ -1,0 +1,54 @@
+<h1 class="mt-4">Dashboard</h1>
+
+<section class="d-flex justify-content-evenly mt-4">
+  <article>
+    <h3>Lords Day</h3>
+    <ul>
+      <% @lords_days.each do |day| %>
+        <li>Date:<%=day.date%> Total: <%=day.teenagers + day.adults + day.children + day.toddlers%> </li>
+      <% end %>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Prayer Meeting</h3>
+    <ul>
+      <% @prayer_meetings.each do |prayer| %>
+        <li>Date:<%=prayer.date%> Total: <%=prayer.teenagers + prayer.adults + prayer.children + prayer.toddlers%> </li>
+      <% end %>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Small Group</h3>
+    <ul>
+      <% @small_groups.each do |group| %>
+        <li>Date:<%=group.date%> Total: <%=group.teenagers + group.adults + group.children + group.toddlers%> </li>
+      <% end %>
+    </ul>
+  </article>
+
+</section>
+
+
+
+<section>
+    <div class="d-flex justify-content-evenly">
+      <div>
+        <h3>Lords Day</h3>
+        <%= render "lords_day/form" %>
+      </div>
+
+      <div>
+        <h3>Prayer Meeting</h3>
+        <%= render "prayer_meeting/form" %>
+      </div>
+
+      <div>
+        <h3>Small Group</h3>
+        <%= render "small_group/form" %>
+      </div>
+  </div>
+
+
+</section>

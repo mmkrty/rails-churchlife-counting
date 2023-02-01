@@ -1,0 +1,9 @@
+  <%= simple_form_for @small_group, data: { controller: 'flatpickr' } do |f| %>
+    <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "date" }} %>
+    <%= f.input :location, as: :select, collection: [['Friednau'], ['Pans & Barths'], ['Tsays & Favors'], ['Moralas & Fomins & Lins'], ['Wangs & Gebreselassies'],['Xies & Brother & Sister house'],['Farsi speaking'],['Russian speaking']] %>
+    <%= f.input :adults %>
+    <%= f.input :teenagers %>
+    <%= f.input :children %>
+    <%= f.input :toddlers %>
+    <%= f.submit class: 'button button-primary' %>
+  <% end %>

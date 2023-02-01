@@ -1,12 +1,16 @@
 class LordsDaysController < ApplicationController
+
+  def index
+  end
+
   def new
     @lords_day = LordsDay.new
   end
 
   def create
     @lords_day = LordsDay.new(lords_day_params)
-    if @tour.save
-      redirect_to lords_days_path
+    if @lords_day.save
+      redirect_to dashboard_path
     else
       render :new, status: :unprocessable_entity
     end

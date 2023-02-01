@@ -1,5 +1,5 @@
-  <%= simple_form_for @lords_day do |f| %>
-    <%= f.input :name  %>
+  <%= simple_form_for @lords_day, data: { controller: 'flatpickr' } do |f| %>
+    <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "date" }} %>
     <%= f.input :location, as: :select, collection: [['meeting hall']] %>
     <%= f.input :adults %>
     <%= f.input :teenagers %>
