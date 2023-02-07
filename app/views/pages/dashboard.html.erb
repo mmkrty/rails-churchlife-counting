@@ -1,6 +1,77 @@
 <h1 class="mt-4">Dashboard</h1>
 
-<section class="d-flex justify-content-evenly mt-4">
+<!-- Modals -->
+<div>
+<!-- Button trigger modal -->
+  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#lordsDayModal" title="lords day count">
+    Lords Day +
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="lordsDayModal" tabindex="-1" aria-labelledby="lordsDayModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">New Lords Day Count</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= render "lords_day/form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#prayerMeetingModal" title="lords day count">
+    Prayer Meeting +
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="prayerMeetingModal" tabindex="-1" aria-labelledby="prayerMeetinglLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">New Prayer Meeting Count</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= render "prayer_meeting/form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#smallGroupModal" title="lords day count">
+    Small Group +
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="smallGroupModal" tabindex="-1" aria-labelledby="smallGrouplLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">New Small Group Meeting Count</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= render "small_group/form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<section class="d-flex  justify-content-evenly mt-4">
+
+
+
+
+
+
   <article>
     <h3>Lords Day</h3>
     <ul>
@@ -27,28 +98,5 @@
       <% end %>
     </ul>
   </article>
-
-</section>
-
-
-
-<section>
-    <div class="d-flex justify-content-evenly">
-      <div>
-        <h3>Lords Day</h3>
-        <%= render "lords_day/form" %>
-      </div>
-
-      <div>
-        <h3>Prayer Meeting</h3>
-        <%= render "prayer_meeting/form" %>
-      </div>
-
-      <div>
-        <h3>Small Group</h3>
-        <%= render "small_group/form" %>
-      </div>
-  </div>
-
 
 </section>
