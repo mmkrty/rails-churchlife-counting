@@ -65,7 +65,7 @@
 </div>
 
 
-<section class="d-flex  justify-content-evenly mt-4">
+<section class="d-flex flex-column justify-content-evenly mt-4">
 
 
 
@@ -74,6 +74,7 @@
 
   <article>
     <h3>Lords Day</h3>
+    <%= line_chart @lords_days_data %>
     <ul>
       <% @lords_days.each do |day| %>
         <li>Date:<%=day.date%> Total: <%=day.teenagers + day.adults + day.children + day.toddlers%> </li>
@@ -83,6 +84,7 @@
 
   <article>
     <h3>Prayer Meeting</h3>
+    <%= line_chart @prayer_meetings_data %>
     <ul>
       <% @prayer_meetings.each do |prayer| %>
         <li>Date:<%=prayer.date%> Total: <%=prayer.teenagers + prayer.adults + prayer.children + prayer.toddlers%> </li>
@@ -92,6 +94,7 @@
 
   <article>
     <h3>Small Group</h3>
+    <%= line_chart @small_groups_data %>
     <ul>
       <% @small_groups.each do |group| %>
         <li>Date:<%=group.date%> Total: <%=group.teenagers + group.adults + group.children + group.toddlers%> </li>

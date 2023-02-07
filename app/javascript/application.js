@@ -19,3 +19,6 @@ import "bootstrap";
 
 // // Manually register Flatpickr as a stimulus controller
 // application.register("flatpickr", Flatpickr);
+import "chartkick/chart.js";
+// import "chartkick";
+// import "Chart.bundle";
