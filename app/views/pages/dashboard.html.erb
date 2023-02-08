@@ -78,12 +78,21 @@
       <%= line_chart @lords_days_data %>
     <% end %>
 
+    <% if @latest_lords_day_pie_chart_data.present? %>
+      <%= pie_chart @latest_lords_day_pie_chart_data %>
+    <% end %>
+
+
   </article>
 
   <article class="my-4">
     <h3>Prayer Meeting</h3>
     <% if !@prayer_meetings_data.empty? %>
       <%= line_chart @prayer_meetings_data %>
+    <% end %>
+
+    <% if @lastest_prayer_meetings_pie_chart_data.present? %>
+      <%= pie_chart @lastest_prayer_meetings_pie_chart_data %>
     <% end %>
 
   </article>
