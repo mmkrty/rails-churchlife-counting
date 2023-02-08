@@ -7,6 +7,7 @@ class CreateLordsDays < ActiveRecord::Migration[7.0]
       t.integer :teenagers, default: 0
       t.integer :children, default: 0
       t.integer :toddlers, default: 0
+      t.integer :total
 
       t.timestamps
     end

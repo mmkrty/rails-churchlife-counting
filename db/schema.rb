@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_212243) do
     t.integer "teenagers", default: 0
     t.integer "children", default: 0
     t.integer "toddlers", default: 0
+    t.integer "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -32,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_212243) do
     t.integer "teenagers", default: 0
     t.integer "children", default: 0
     t.integer "toddlers", default: 0
+    t.integer "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_212243) do
     t.integer "teenagers", default: 0
     t.integer "children", default: 0
     t.integer "toddlers", default: 0
+    t.integer "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
