@@ -74,19 +74,23 @@
 
   <article class="my-4">
     <h3>Lords Day</h3>
-    <% if !@lords_days_data.empty? %>
+    <div class="d-flex">
+        <% if !@lords_days_data.empty? %>
       <%= line_chart @lords_days_data %>
     <% end %>
 
     <% if @latest_lords_day_pie_chart_data.present? %>
       <%= pie_chart @latest_lords_day_pie_chart_data %>
     <% end %>
+    </div>
+
 
 
   </article>
 
   <article class="my-4">
     <h3>Prayer Meeting</h3>
+    <div class="d-flex">
     <% if !@prayer_meetings_data.empty? %>
       <%= line_chart @prayer_meetings_data %>
     <% end %>
@@ -94,6 +98,8 @@
     <% if @lastest_prayer_meetings_pie_chart_data.present? %>
       <%= pie_chart @lastest_prayer_meetings_pie_chart_data %>
     <% end %>
+        </div>
+
 
   </article>
 

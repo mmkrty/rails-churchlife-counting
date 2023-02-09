@@ -19,6 +19,6 @@ class LordsDaysController < ApplicationController
   private
 
   def lords_day_params
-    params.require(:lords_day).permit(:date, :location, :adults, :teenagers, :childrens, :toddlers)
+    params.require(:lords_day).permit(:date, :location, :adults, :teenagers, :children, :toddlers)
   end
 end
