@@ -53,5 +53,20 @@ class PagesController < ApplicationController
     @small_groups_data = @grouped_small_groups.map do |date, meetings|
       [date, meetings.sum(&:total)]
     end
+
+    @small_latest_date = SmallGroup.maximum(:date)
+    @lastest_small_groups = SmallGroup.where(date: @small_latest_date)
+    @lastest_small_groups_adults = @lastest_small_groups.map(&:adults).sum
+    @lastest_small_groups_teenagers = @lastest_small_groups.map(&:teenagers).sum
+    @lastest_small_groups_children = @lastest_small_groups.map(&:children).sum
+    @lastest_small_groups_toddlers = @lastest_small_groups.map(&:toddlers).sum
+    @lastest_small_groups_total_sum = @lastest_small_groups.map(&:total).sum
+
+    @lastest_small_groups_pie_chart_data = [
+      ["Adults", (@lastest_small_groups_adults / @lastest_small_groups_total_sum.to_f * 100).round(2)],
+      ["Teenagers", (@lastest_small_groups_teenagers / @lastest_small_groups_total_sum.to_f * 100).round(2)],
+      ["Children", (@lastest_small_groups_children /  @lastest_small_groups_total_sum.to_f * 100).round(2)],
+      ["Toddlers", (@lastest_small_groups_toddlers /  @lastest_small_groups_total_sum.to_f * 100).round(2)],
+    ]
   end
 end

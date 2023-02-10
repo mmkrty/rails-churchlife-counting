@@ -105,9 +105,15 @@
 
   <article class="my-4">
     <h3>Small Group</h3>
+    <div class="d-flex">
     <% if !@small_groups_data.empty? %>
       <%= line_chart @small_groups_data %>
     <% end %>
+
+    <% if @lastest_small_groups_pie_chart_data.present? %>
+      <%= pie_chart @lastest_small_groups_pie_chart_data %>
+    <% end %>
+    </div>
 
   </article>
 
