@@ -69,4 +69,13 @@ class PagesController < ApplicationController
       ["Toddlers", (@lastest_small_groups_toddlers /  @lastest_small_groups_total_sum.to_f * 100).round(2)],
     ]
   end
+
+  def pie_chart_data(meeting)
+    [
+      ["Adults", (meeting.adults / meeting.total.to_f * 100).round(2)],
+      ["Teenagers", (meeting.teenagers / meeting.total.to_f * 100).round(2)],
+      ["Children", (meeting.children / meeting.total.to_f * 100).round(2)],
+      ["Toddlers", (meeting.toddlers / meeting.total.to_f * 100).round(2)],
+    ]
+  end
 end
