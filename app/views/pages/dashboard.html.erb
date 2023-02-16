@@ -71,50 +71,55 @@
 
 
 
+  <% if !@lords_days_data.empty? %>
+    <article class="my-4">
+      <h3>Lords Day</h3>
+      <div class="d-flex">
+      <% if !@lords_days_data.empty? %>
+        <%= line_chart @lords_days_data %>
+      <% end %>
 
-  <article class="my-4">
-    <h3>Lords Day</h3>
-    <div class="d-flex">
-        <% if !@lords_days_data.empty? %>
-      <%= line_chart @lords_days_data %>
-    <% end %>
-
-    <% if @latest_lords_day_pie_chart_data.present? %>
-      <%= pie_chart @latest_lords_day_pie_chart_data %>
-    <% end %>
-    </div>
-
-
-
-  </article>
-
-  <article class="my-4">
-    <h3>Prayer Meeting</h3>
-    <div class="d-flex">
-    <% if !@prayer_meetings_data.empty? %>
-      <%= line_chart @prayer_meetings_data %>
-    <% end %>
-
-    <% if @lastest_prayer_meetings_pie_chart_data.present? %>
-      <%= pie_chart @lastest_prayer_meetings_pie_chart_data %>
-    <% end %>
-        </div>
+      <% if @latest_lords_day_pie_chart_data.present? %>
+        <%= pie_chart @latest_lords_day_pie_chart_data %>
+      <% end %>
+      </div>
 
 
-  </article>
 
-  <article class="my-4">
-    <h3>Small Group</h3>
-    <div class="d-flex">
-    <% if !@small_groups_data.empty? %>
-      <%= line_chart @small_groups_data %>
-    <% end %>
+    </article>
+  <% end %>
 
-    <% if @lastest_small_groups_pie_chart_data.present? %>
-      <%= pie_chart @lastest_small_groups_pie_chart_data %>
-    <% end %>
-    </div>
+  <% if !@prayer_meetings_data.empty? %>
+    <article class="my-4">
+      <h3>Prayer Meeting</h3>
+      <div class="d-flex">
+      <% if !@prayer_meetings_data.empty? %>
+        <%= line_chart @prayer_meetings_data %>
+      <% end %>
 
-  </article>
+      <% if @lastest_prayer_meetings_pie_chart_data.present? %>
+        <%= pie_chart @lastest_prayer_meetings_pie_chart_data %>
+      <% end %>
+          </div>
+
+
+    </article>
+  <% end %>
+
+  <% if !@small_groups_data.empty? %>
+    <article class="my-4">
+      <h3>Small Group</h3>
+      <div class="d-flex">
+      <% if !@small_groups_data.empty? %>
+        <%= line_chart @small_groups_data %>
+      <% end %>
+
+      <% if @lastest_small_groups_pie_chart_data.present? %>
+        <%= pie_chart @lastest_small_groups_pie_chart_data %>
+      <% end %>
+      </div>
+
+    </article>
+  <% end %>
 
 </section>
