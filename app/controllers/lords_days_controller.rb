@@ -1,6 +1,7 @@
 class LordsDaysController < ApplicationController
 
-  def index
+  def show
+    @lords_days = LordsDay.all
   end
 
   def new

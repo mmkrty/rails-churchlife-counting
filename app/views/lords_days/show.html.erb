@@ -1,0 +1,13 @@
+<ul>
+<% @lords_days.each do |lords_day| %>
+  <li>
+    <p><%= lords_day.date %></p>
+    <p>Total: <%= lords_day.total %></p>
+    <p>adults: <%= lords_day.adults%></p>
+    <p>teenagers: <%= lords_day.teenagers %></p>
+    <p>children: <%= lords_day.children %></p>
+    <p>toddlers: <%= lords_day.toddlers %></p>
+  </li>
+
+<% end %>
+</ul>

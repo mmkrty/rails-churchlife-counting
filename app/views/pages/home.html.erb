@@ -1,2 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="text-center">
+<h1>Church Statistics</h1>
+
+<% if user_signed_in? %>
+  <p>Welcome, <%= current_user.email %></p>
+    <div>
+      <%= link_to "Dashboard", dashboard_path, class: "btn btn-info" %>
+  </div>
+<% else %>
+  <p>Please Login</p>
+  <div>
+      <%= link_to "Login", new_user_session_path, class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+
+
+</div>
