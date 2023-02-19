@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Date</th>
+      <th>Location</th>
       <th>Adults</th>
       <th>Teenagers</th>
       <th>Children</th>
@@ -16,6 +17,7 @@
     <% @small_groups.each do |small_group| %>
       <tr>
         <td><%= small_group.date %></td>
+        <td><%= small_group.location %></td>
         <td><%= small_group.adults%></td>
         <td><%= small_group.teenagers %></td>
         <td><%= small_group.children %></td>

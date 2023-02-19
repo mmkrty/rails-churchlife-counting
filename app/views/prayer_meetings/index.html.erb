@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Date</th>
+      <th>Location</th>
       <th>Adults</th>
       <th>Teenagers</th>
       <th>Children</th>
@@ -16,6 +17,7 @@
     <% @prayer_meetings.each do |prayer_meeting| %>
       <tr>
         <td><%= prayer_meeting.date %></td>
+        <td><%= prayer_meeting.location %></td>
         <td><%= prayer_meeting.adults%></td>
         <td><%= prayer_meeting.teenagers %></td>
         <td><%= prayer_meeting.children %></td>
