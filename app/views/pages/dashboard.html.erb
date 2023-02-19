@@ -95,7 +95,10 @@
 
     <% if !@prayer_meetings_data.empty? %>
       <article class="my-4">
-        <h3>Prayer Meeting</h3>
+
+        <h3 class="text-center mb-3">
+          <%= link_to "Prayer Meetings", prayer_meetings_path, class: "text-decoration-none fs-2 text-black fw-bold"  %>
+        </h3>
         <div class="d-flex">
         <% if !@prayer_meetings_data.empty? %>
           <%= line_chart @prayer_meetings_data %>

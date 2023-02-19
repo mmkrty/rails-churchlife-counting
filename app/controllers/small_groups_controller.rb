@@ -1,4 +1,8 @@
 class SmallGroupsController < ApplicationController
+  def index
+    @small_groups = SmallGroup.all.order(:date)
+  end
+
   def new
     @small_group = SmallGroup.new
   end
