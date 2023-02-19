@@ -1,6 +1,6 @@
 class PrayerMeeting < ApplicationRecord
   validate :validate_date_is_tuesday
-  before_create :calculate_total
+  before_validation :calculate_total
   before_save :calculate_total
 
   private
