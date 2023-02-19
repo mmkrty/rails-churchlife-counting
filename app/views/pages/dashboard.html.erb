@@ -115,7 +115,10 @@
 
     <% if !@small_groups_data.empty? %>
       <article class="my-4">
-        <h3>Small Group</h3>
+        <h3 class="text-center mb-3">
+          <%= link_to "Small Groups", small_groups_path, class: "text-decoration-none fs-2 text-black fw-bold"  %>
+        </h3>
+
         <div class="d-flex">
         <% if !@small_groups_data.empty? %>
           <%= line_chart @small_groups_data %>

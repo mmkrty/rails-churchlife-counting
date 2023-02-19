@@ -1,0 +1,32 @@
+
+<h2>Small Groups</h2>
+<table  class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Adults</th>
+      <th>Teenagers</th>
+      <th>Children</th>
+      <th>Toddlers</th>
+      <th>Total</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @small_groups.each do |small_group| %>
+      <tr>
+        <td><%= small_group.date %></td>
+        <td><%= small_group.adults%></td>
+        <td><%= small_group.teenagers %></td>
+        <td><%= small_group.children %></td>
+        <td><%= small_group.toddlers %></td>
+        <td><%= small_group.total %></td>
+        <td>
+        <%= link_to "Edit", edit_small_group_path(small_group), class: "text-warning" %>
+        <%= link_to "Delete", small_group_path(small_group), class: "text-danger", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+        </td>
+      </tr>
+    <% end %>
+    <!-- Add more rows as needed -->
+  </tbody>
+</table>
