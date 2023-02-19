@@ -1,125 +1,129 @@
-<h1 class="mt-4">Dashboard</h1>
 
-<!-- Modals -->
-<div>
-<!-- Button trigger modal -->
-  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#lordsDayModal" title="lords day count">
-    Lords Day +
-  </button>
+  <h1 class="mt-4">Dashboard</h1>
 
-  <!-- Modal -->
-  <div class="modal fade" id="lordsDayModal" tabindex="-1" aria-labelledby="lordsDayModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">New Lords Day Count</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <%= render "lords_day/form" %>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <!-- Modals -->
+  <div>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#prayerMeetingModal" title="lords day count">
-    Prayer Meeting +
-  </button>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#lordsDayModal" title="lords day count">
+      Lords Day +
+    </button>
 
-  <!-- Modal -->
-  <div class="modal fade" id="prayerMeetingModal" tabindex="-1" aria-labelledby="prayerMeetinglLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">New Prayer Meeting Count</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <%= render "prayer_meeting/form" %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#smallGroupModal" title="lords day count">
-    Small Group +
-  </button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="smallGroupModal" tabindex="-1" aria-labelledby="smallGrouplLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">New Small Group Meeting Count</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <%= render "small_group/form" %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-<section class="d-flex flex-column justify-content-evenly mt-4">
-
-
-
-
-
-  <% if !@lords_days_data.empty? %>
-    <article class="my-4">
-      <h3>Lords Day</h3>
-      <div class="d-flex">
-      <% if !@lords_days_data.empty? %>
-        <%= line_chart @lords_days_data %>
-      <% end %>
-
-      <% if @latest_lords_day_pie_chart_data.present? %>
-        <%= pie_chart @latest_lords_day_pie_chart_data %>
-      <% end %>
-      </div>
-
-
-
-    </article>
-  <% end %>
-
-  <% if !@prayer_meetings_data.empty? %>
-    <article class="my-4">
-      <h3>Prayer Meeting</h3>
-      <div class="d-flex">
-      <% if !@prayer_meetings_data.empty? %>
-        <%= line_chart @prayer_meetings_data %>
-      <% end %>
-
-      <% if @lastest_prayer_meetings_pie_chart_data.present? %>
-        <%= pie_chart @lastest_prayer_meetings_pie_chart_data %>
-      <% end %>
+    <!-- Modal -->
+    <div class="modal fade" id="lordsDayModal" tabindex="-1" aria-labelledby="lordsDayModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">New Lords Day Count</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-
-
-    </article>
-  <% end %>
-
-  <% if !@small_groups_data.empty? %>
-    <article class="my-4">
-      <h3>Small Group</h3>
-      <div class="d-flex">
-      <% if !@small_groups_data.empty? %>
-        <%= line_chart @small_groups_data %>
-      <% end %>
-
-      <% if @lastest_small_groups_pie_chart_data.present? %>
-        <%= pie_chart @lastest_small_groups_pie_chart_data %>
-      <% end %>
+          <div class="modal-body">
+            <%= render "lords_day/form" %>
+          </div>
+        </div>
       </div>
+    </div>
 
-    </article>
-  <% end %>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#prayerMeetingModal" title="lords day count">
+      Prayer Meeting +
+    </button>
 
-</section>
+    <!-- Modal -->
+    <div class="modal fade" id="prayerMeetingModal" tabindex="-1" aria-labelledby="prayerMeetinglLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">New Prayer Meeting Count</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= render "prayer_meeting/form" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#smallGroupModal" title="lords day count">
+      Small Group +
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="smallGroupModal" tabindex="-1" aria-labelledby="smallGrouplLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">New Small Group Meeting Count</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= render "small_group/form" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <section class="d-flex flex-column justify-content-start mt-4">
+
+
+
+
+
+    <% if !@lords_days_data.empty? %>
+      <article class="my-4">
+
+        <h3 class="text-center mb-3">
+          <%= link_to "Lords Days", lords_days_path, class: "text-decoration-none fs-2 text-black fw-bold"  %>
+        </h3>
+        <div class="d-flex">
+        <% if !@lords_days_data.empty? %>
+          <%= line_chart @lords_days_data %>
+        <% end %>
+
+        <% if @latest_lords_day_pie_chart_data.present? %>
+          <%= pie_chart @latest_lords_day_pie_chart_data %>
+        <% end %>
+        </div>
+
+
+
+      </article>
+    <% end %>
+
+    <% if !@prayer_meetings_data.empty? %>
+      <article class="my-4">
+        <h3>Prayer Meeting</h3>
+        <div class="d-flex">
+        <% if !@prayer_meetings_data.empty? %>
+          <%= line_chart @prayer_meetings_data %>
+        <% end %>
+
+        <% if @lastest_prayer_meetings_pie_chart_data.present? %>
+          <%= pie_chart @lastest_prayer_meetings_pie_chart_data %>
+        <% end %>
+            </div>
+
+
+      </article>
+    <% end %>
+
+    <% if !@small_groups_data.empty? %>
+      <article class="my-4">
+        <h3>Small Group</h3>
+        <div class="d-flex">
+        <% if !@small_groups_data.empty? %>
+          <%= line_chart @small_groups_data %>
+        <% end %>
+
+        <% if @lastest_small_groups_pie_chart_data.present? %>
+          <%= pie_chart @lastest_small_groups_pie_chart_data %>
+        <% end %>
+        </div>
+
+      </article>
+    <% end %>
+
+  </section>

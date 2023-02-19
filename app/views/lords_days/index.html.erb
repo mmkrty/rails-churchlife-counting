@@ -1,0 +1,32 @@
+
+<h2>Lords Days</h2>
+<table  class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Adults</th>
+      <th>Teenagers</th>
+      <th>Children</th>
+      <th>Toddlers</th>
+      <th>Total</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lords_days.each do |lords_day| %>
+      <tr>
+        <td><%= lords_day.date %></td>
+        <td><%= lords_day.adults%></td>
+        <td><%= lords_day.teenagers %></td>
+        <td><%= lords_day.children %></td>
+        <td><%= lords_day.toddlers %></td>
+        <td><%= lords_day.total %></td>
+        <td>
+        <%= link_to "Edit", edit_lords_day_path(lords_day), class: "text-warning" %>
+        <%= link_to "Delete", lords_day_path(lords_day), class: "text-danger", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+        </td>
+      </tr>
+    <% end %>
+    <!-- Add more rows as needed -->
+  </tbody>
+</table>
