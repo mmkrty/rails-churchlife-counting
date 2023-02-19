@@ -1,4 +1,5 @@
 class SmallGroup < ApplicationRecord
+  before_create :calculate_total
   before_save :calculate_total
 
   private
