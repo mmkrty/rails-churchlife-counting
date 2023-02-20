@@ -80,7 +80,7 @@
         </h3>
         <div class="d-flex">
         <% if !@lords_days_data.empty? %>
-          <%= line_chart @lords_days_data %>
+          <%= line_chart @lords_days_data, library: {hAxis: {title: 'Week', label: 'Week Number and Year'}}  %>
         <% end %>
 
         <% if @latest_lords_day_pie_chart_data.present? %>
