@@ -84,7 +84,7 @@
         <% end %>
 
         <% if @latest_lords_day_pie_chart_data.present? %>
-          <%= pie_chart @latest_lords_day_pie_chart_data %>
+          <%= pie_chart @latest_lords_day_pie_chart_data, library: {title: {text: "Last lords day"}}  %>
         <% end %>
         </div>
 
@@ -101,7 +101,7 @@
         </h3>
         <div class="d-flex">
         <% if !@prayer_meetings_data.empty? %>
-          <%= line_chart @prayer_meetings_data %>
+          <%= line_chart @prayer_meetings_data, library: {hAxis: {title: 'Week', label: 'Week Number and Year'}}  %>
         <% end %>
 
         <% if @lastest_prayer_meetings_pie_chart_data.present? %>

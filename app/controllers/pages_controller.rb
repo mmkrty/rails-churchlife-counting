@@ -30,10 +30,13 @@ class PagesController < ApplicationController
 
     @prayer_meeting = PrayerMeeting.new
     @prayer_meetings = PrayerMeeting.all
-    @grouped_prayer_meetings = @prayer_meetings.group_by(&:date)
-    @prayer_meetings_data = @grouped_prayer_meetings.map do |date, meetings|
-      [date, meetings.sum(&:total)]
-    end
+    # @grouped_prayer_meetings = @prayer_meetings.group_by(&:date)
+    # @prayer_meetings_data = @grouped_prayer_meetings.map do |date, meetings|
+    #   [date, meetings.sum(&:total)]
+    # end
+    @prayer_meetings_data = @prayer_meetings.group_by { |pm| pm.date.strftime("%U-%Y") }
+                                            .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total)] }
+                                            .sort_by { |week, _total| Date.strptime(week, "Week %U, %Y") }
 
     @prayer_latest_date = PrayerMeeting.maximum(:date)
     @lastest_prayer_meetings = PrayerMeeting.where(date: @prayer_latest_date)
