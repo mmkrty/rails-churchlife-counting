@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: churchlife_counting_production
   username: churchlife_counting
   password: <%= ENV["CHURCHLIFE_COUNTING_DATABASE_PASSWORD"] %>
