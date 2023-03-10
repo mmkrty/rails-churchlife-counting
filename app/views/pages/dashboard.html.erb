@@ -1,3 +1,58 @@
+<!-- Include the Google Charts API library -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
+<!-- Write JavaScript code to create the chart using the API -->
+<script type="text/javascript">
+  // Load the Visualization API and the corechart package
+  google.charts.load('current', {'packages':['corechart']});
+
+  // Set a callback to run when the API is loaded
+  google.charts.setOnLoadCallback(drawChart);
+
+  // Define a function to draw the chart
+  function drawChart() {
+    // Create a data table
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Week');
+    data.addColumn('number', 'Total');
+    data.addColumn('number', 'Adults');
+    data.addColumn('number', 'Teenagers');
+    data.addColumn('number', 'Children');
+    data.addColumn('number', 'Toddlers');
+    data.addRows([
+      <% @lords_days_data.each do |week, total, adults, teenagers, children, toddlers| %>
+        ['<%= week %>', <%= total %>, <%= adults %>, <%= teenagers %>, <%= children %>, <%= toddlers %>],
+      <% end %>
+    ]);
+
+    // Set chart options
+    var options = {
+      title: 'Weekly Statistics',
+      hAxis: {title: 'Week Number and Year'},
+      vAxes: [
+        {title: 'Total'},
+        {title: 'Number of People', titleTextStyle: {color: '#FF0000'}, textStyle: {color: '#FF0000'}}
+      ],
+      seriesType: 'bars',
+      series: {
+        0: {type: 'line', targetAxisIndex: 0},
+        1: {targetAxisIndex: 1},
+        2: {targetAxisIndex: 1},
+        3: {targetAxisIndex: 1},
+        4: {targetAxisIndex: 1}
+      },
+      colors: ['#0000FF', '#00FF00', '#FFA500', '#FF0000', '#800080']
+    };
+
+    // Instantiate and draw the chart
+    var chart = new google.visualization.ComboChart(document.getElementById('lords-day-chart'));
+    chart.draw(data, options);
+  }
+</script>
+
+
 
   <h1 class="mt-4">Dashboard</h1>
 
@@ -78,10 +133,18 @@
         <h3 class="text-center mb-3">
           <%= link_to "Lords Days", lords_days_path, class: "text-decoration-none fs-2 text-black fw-bold"  %>
         </h3>
-        <div class="d-flex">
-        <% if !@lords_days_data.empty? %>
-          <%= line_chart @lords_days_data, library: {hAxis: {title: 'Week', label: 'Week Number and Year'}}  %>
+
+                <% if !@lords_days_data.empty? %>
+          <!-- Create a container for the chart -->
+            <div id="lords-day-chart" style="width: 100%; height: 500px;"></div>
         <% end %>
+
+        <div class="d-flex">
+
+
+
+
+
 
         <% if @latest_lords_day_pie_chart_data.present? %>
           <%= pie_chart @latest_lords_day_pie_chart_data, library: {title: {text: "Last lords day"}}  %>

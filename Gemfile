@@ -80,5 +80,6 @@ end
 # For charts
 gem "chartkick"
 gem "groupdate"
+gem 'highcharts-rails'
 
 gem "dockerfile-rails"

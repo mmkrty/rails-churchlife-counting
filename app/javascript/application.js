@@ -22,3 +22,5 @@ import "bootstrap";
 import "chartkick/chart.js";
 // import "chartkick";
 // import "Chart.bundle";
+
+//= require highcharts

@@ -8,9 +8,14 @@ class PagesController < ApplicationController
     @lords_day = LordsDay.new
     @lords_days = LordsDay.all
     # @lords_days_data = @lords_days.map { |ld| [ld.date, ld.total] }
+    # @lords_days_data = @lords_days.group_by { |ld| ld.date.strftime("%U-%Y") }
+    #                               .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total)] }
+    #                               .sort_by { |week, _total| Date.strptime(week, "Week %U, %Y") }
+
     @lords_days_data = @lords_days.group_by { |ld| ld.date.strftime("%U-%Y") }
-                                  .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total)] }
-                                  .sort_by { |week, _total| Date.strptime(week, "Week %U, %Y") }
+                                  .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total), instances.sum(&:adults), instances.sum(&:teenagers), instances.sum(&:children), instances.sum(&:toddlers)] }
+                                  .sort_by { |week, _total, _adults, _teenagers, _children, _toddlers|  Date.strptime(week, "Week %U, %Y") }
+
 
     @lords_latest_date = LordsDay.maximum(:date)
     @latest_lords_day = LordsDay.where(date: @lords_latest_date)
