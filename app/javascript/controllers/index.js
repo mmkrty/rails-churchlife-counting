@@ -2,10 +2,13 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from "./application";
 
-import FlatpickrController from "./flatpickr_controller"
-application.register("flatpickr", FlatpickrController)
+import FlatpickrController from "./flatpickr_controller";
+application.register("flatpickr", FlatpickrController);
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import HelloController from "./hello_controller";
+application.register("hello", HelloController);
+
+import ChartController from "./chart_controller";
+application.register("chart", ChartController);

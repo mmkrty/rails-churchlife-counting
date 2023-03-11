@@ -39,9 +39,13 @@ class PagesController < ApplicationController
     # @prayer_meetings_data = @grouped_prayer_meetings.map do |date, meetings|
     #   [date, meetings.sum(&:total)]
     # end
+    # @prayer_meetings_data = @prayer_meetings.group_by { |pm| pm.date.strftime("%U-%Y") }
+    #                                         .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total)] }
+    #                                         .sort_by { |week, _total| Date.strptime(week, "Week %U, %Y") }
+
     @prayer_meetings_data = @prayer_meetings.group_by { |pm| pm.date.strftime("%U-%Y") }
-                                            .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total)] }
-                                            .sort_by { |week, _total| Date.strptime(week, "Week %U, %Y") }
+                                            .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total), instances.sum(&:adults), instances.sum(&:teenagers), instances.sum(&:children), instances.sum(&:toddlers)] }
+                                            .sort_by { |week, _total, _adults, _teenagers, _children, _toddlers|  Date.strptime(week, "Week %U, %Y") }
 
     @prayer_latest_date = PrayerMeeting.maximum(:date)
     @lastest_prayer_meetings = PrayerMeeting.where(date: @prayer_latest_date)
@@ -60,10 +64,17 @@ class PagesController < ApplicationController
 
     @small_group = SmallGroup.new
     @small_groups = SmallGroup.all
-    @grouped_small_groups = @small_groups.group_by(&:date)
-    @small_groups_data = @grouped_small_groups.map do |date, meetings|
-      [date, meetings.sum(&:total)]
-    end
+    # @grouped_small_groups = @small_groups.group_by(&:date)
+    # @small_groups_data = @grouped_small_groups.map do |date, meetings|
+    #   [date, meetings.sum(&:total)]
+    # end
+
+    @small_groups_data = @small_groups.group_by { |sg| sg.date.strftime("%U-%Y") }
+                                      .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total), instances.sum(&:adults), instances.sum(&:teenagers), instances.sum(&:children), instances.sum(&:toddlers)] }
+                                      .sort_by { |week, _total, _adults, _teenagers, _children, _toddlers|  Date.strptime(week, "Week %U, %Y") }
+
+
+
 
     @small_latest_date = SmallGroup.maximum(:date)
     @lastest_small_groups = SmallGroup.where(date: @small_latest_date)
