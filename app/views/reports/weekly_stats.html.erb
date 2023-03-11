@@ -1,0 +1,16 @@
+<%= form_tag weekly_stats_path, method: :get do %>
+  <%= label_tag :week_number, "Week Number" %>
+  <%= number_field_tag :week_number, params[:week_number] || Date.today.cweek, min: 1, max: 52, step: 1 %>
+  <%= submit_tag "View Stats" %>
+<% end %>
+
+<h1>Weekly Stats for Week <%= @week_number %></h1>
+
+<ul>
+  <li>Total Lords Days: <%= @lords_days_data[0][1] %></li>
+  <li>Total Prayer Meetings: <%= @prayer_meetings_data[0][1] %></li>
+  <li>Total Small Groups: <%= @small_groups_data[0][1] %></li>
+</ul>
+
+<%= link_to "Previous Week", weekly_stats_path(week_number: @week_number - 1) %>
+<%= link_to "Next Week", weekly_stats_path(week_number: @week_number + 1) %>
