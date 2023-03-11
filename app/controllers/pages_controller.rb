@@ -12,9 +12,14 @@ class PagesController < ApplicationController
     #                               .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total)] }
     #                               .sort_by { |week, _total| Date.strptime(week, "Week %U, %Y") }
 
-    @lords_days_data = @lords_days.group_by { |ld| ld.date.strftime("%U-%Y") }
-                                  .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total), instances.sum(&:adults), instances.sum(&:teenagers), instances.sum(&:children), instances.sum(&:toddlers)] }
-                                  .sort_by { |week, _total, _adults, _teenagers, _children, _toddlers|  Date.strptime(week, "Week %U, %Y") }
+    # @lords_days_data = @lords_days.group_by { |ld| ld.date.strftime("%U-%Y") }
+    #                               .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total), instances.sum(&:adults), instances.sum(&:teenagers), instances.sum(&:children), instances.sum(&:toddlers)] }
+    #                               .sort_by { |week, _total, _adults, _teenagers, _children, _toddlers|  Date.strptime(week, "Week %U, %Y") }
+
+    @lords_days_data = @lords_days.group_by { |ld| ld.date.strftime("%W-%Y") }
+                                  .map { |week, instances| ["Week #{week.split('-').first.to_i + 1}, #{week.split('-').last}", instances.sum(&:total), instances.sum(&:adults), instances.sum(&:teenagers), instances.sum(&:children), instances.sum(&:toddlers)] }
+                                  .sort_by { |week, _total, _adults, _teenagers, _children, _toddlers|  Date.strptime(week, "Week %W, %Y") }
+
 
 
     @lords_latest_date = LordsDay.maximum(:date)
@@ -43,9 +48,13 @@ class PagesController < ApplicationController
     #                                         .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total)] }
     #                                         .sort_by { |week, _total| Date.strptime(week, "Week %U, %Y") }
 
-    @prayer_meetings_data = @prayer_meetings.group_by { |pm| pm.date.strftime("%U-%Y") }
-                                            .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total), instances.sum(&:adults), instances.sum(&:teenagers), instances.sum(&:children), instances.sum(&:toddlers)] }
-                                            .sort_by { |week, _total, _adults, _teenagers, _children, _toddlers|  Date.strptime(week, "Week %U, %Y") }
+    # @prayer_meetings_data = @prayer_meetings.group_by { |pm| pm.date.strftime("%U-%Y") }
+    #                                         .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total), instances.sum(&:adults), instances.sum(&:teenagers), instances.sum(&:children), instances.sum(&:toddlers)] }
+    #                                         .sort_by { |week, _total, _adults, _teenagers, _children, _toddlers|  Date.strptime(week, "Week %U, %Y") }
+
+    @prayer_meetings_data = @prayer_meetings.group_by { |pm| pm.date.strftime("%W-%Y") }
+                                            .map { |week, instances| ["Week #{week.split('-').first.to_i + 1}, #{week.split('-').last}", instances.sum(&:total), instances.sum(&:adults), instances.sum(&:teenagers), instances.sum(&:children), instances.sum(&:toddlers)] }
+                                            .sort_by { |week, _total, _adults, _teenagers, _children, _toddlers|  Date.strptime(week, "Week %W, %Y") }
 
     @prayer_latest_date = PrayerMeeting.maximum(:date)
     @lastest_prayer_meetings = PrayerMeeting.where(date: @prayer_latest_date)
@@ -69,9 +78,9 @@ class PagesController < ApplicationController
     #   [date, meetings.sum(&:total)]
     # end
 
-    @small_groups_data = @small_groups.group_by { |sg| sg.date.strftime("%U-%Y") }
-                                      .map { |week, instances| ["Week #{week.split('-').first}, #{week.split('-').last}", instances.sum(&:total), instances.sum(&:adults), instances.sum(&:teenagers), instances.sum(&:children), instances.sum(&:toddlers)] }
-                                      .sort_by { |week, _total, _adults, _teenagers, _children, _toddlers|  Date.strptime(week, "Week %U, %Y") }
+    @small_groups_data = @small_groups.group_by { |sg| sg.date.strftime("%W-%Y") }
+                                      .map { |week, instances| ["Week #{week.split('-').first.to_i + 1}, #{week.split('-').last}", instances.sum(&:total), instances.sum(&:adults), instances.sum(&:teenagers), instances.sum(&:children), instances.sum(&:toddlers)] }
+                                      .sort_by { |week, _total, _adults, _teenagers, _children, _toddlers|  Date.strptime(week, "Week %W, %Y") }
 
 
 

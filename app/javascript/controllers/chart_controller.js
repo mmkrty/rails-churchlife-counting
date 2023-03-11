@@ -12,9 +12,24 @@ export default class extends Controller {
   }
 
   drawAllCharts() {
-    this.drawChart(this.lordsDaysData, "lords-day-chart");
+    this.drawChart(this.lordsDaysData, "lords-days-chart");
     this.drawChart(this.prayerMeetingsData, "prayer-meetings-chart");
     this.drawChart(this.smallGroupsData, "small-groups-chart");
+  }
+
+  formatChartTitle(title) {
+    // Replace hyphens with spaces
+    let formattedTitle = title.replace(/-/g, " ");
+
+    // Remove "Chart" suffix
+    formattedTitle = formattedTitle.replace(/ chart/gi, "");
+
+    // Capitalize the first letter of each word
+    formattedTitle = formattedTitle.replace(/\b\w/g, (char) =>
+      char.toUpperCase()
+    );
+
+    return formattedTitle;
   }
 
   drawChart(dataset, chartId) {
@@ -28,16 +43,26 @@ export default class extends Controller {
     data.addColumn("number", "Toddlers");
     data.addRows(dataset);
 
+    const chartTitle = this.formatChartTitle(chartId);
+
     // Set chart options
     const options = {
-      title: "Weekly Statistics",
-      hAxis: { title: "Week Number and Year" },
+      title: `${chartTitle} Weekly Statistics`,
+      titleTextStyle: {
+        fontSize: 18,
+        fontName: "Nunito",
+        color: "#333",
+      },
+      hAxis: {
+        title: "Week Number and Year",
+        titleTextStyle: { fontName: "Nunito" },
+      },
       vAxes: [
         { title: "Total" },
         {
           title: "Number of People",
-          titleTextStyle: { color: "#FF0000" },
-          textStyle: { color: "#FF0000" },
+          titleTextStyle: { color: "#FF0000", fontName: "Nunito" },
+          textStyle: { color: "#FF0000", fontName: "Work Sans" },
         },
       ],
       seriesType: "bars",
