@@ -48,7 +48,7 @@ export default class extends Controller {
         3: { targetAxisIndex: 1 },
         4: { targetAxisIndex: 1 },
       },
-      colors: ["#0000FF", "#00FF00", "#FFA500", "#FF0000", "#800080"],
+      colors: ["#0000FF", "#3366CC", "#DC3912", "#FF9900", "#109418"],
     };
 
     // Instantiate and draw the chart
