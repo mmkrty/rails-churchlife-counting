@@ -6,11 +6,45 @@
 
 <h1>Weekly Stats for Week <%= @week_number %></h1>
 
-<ul>
-  <li>Total Lords Days: <%= @lords_days_data.present? ? @lords_days_data[0][1] : "no records yet" %></li>
-  <li>Total Prayer Meetings: <%= @prayer_meetings_data.present? ? @prayer_meetings_data[0][1] : "no records yet" %></li>
-  <li>Total Small Groups: <%= @small_groups_data.present? ? @small_groups_data[0][1] : "no records yet" %></li>
-</ul>
+<table  class="table">
+  <thead>
+    <tr>
+    <th>Meeting</th>
+    <th>Adults</th>
+    <th>Teenagers</th>
+    <th>Children</th>
+    <th>Toddlers</th>
+    <th>Total</th>
+        </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>Lords Day</td>
+    <td><%= @lords_days_data.present? ? @lords_days_data[0][2] : "no records yet" %></td>
+    <td><%= @lords_days_data.present? ? @lords_days_data[0][3] : "no records yet" %></td>
+    <td><%= @lords_days_data.present? ? @lords_days_data[0][4] : "no records yet" %></td>
+    <td><%= @lords_days_data.present? ? @lords_days_data[0][5] : "no records yet" %></td>
+    <td><%= @lords_days_data.present? ? @lords_days_data[0][1] : "no records yet" %></td>
+    </tr>
+    <tr>
+    <td>Prayer Meeting</td>
+    <td><%= @prayer_meetings_data.present? ? @prayer_meetings_data[0][2] : "no records yet" %></td>
+    <td><%= @prayer_meetings_data.present? ? @prayer_meetings_data[0][3] : "no records yet" %></td>
+    <td><%= @prayer_meetings_data.present? ? @prayer_meetings_data[0][4] : "no records yet" %></td>
+    <td><%= @prayer_meetings_data.present? ? @prayer_meetings_data[0][5] : "no records yet" %></td>
+    <td><%= @prayer_meetings_data.present? ? @prayer_meetings_data[0][1] : "no records yet" %></td>
+    </tr>
+    <tr>
+    <td>Small Groups</td>
+    <td><%= @small_groups_data.present? ? @small_groups_data[0][2] : "no records yet" %></td>
+    <td><%= @small_groups_data.present? ? @small_groups_data[0][3] : "no records yet" %></td>
+    <td><%= @small_groups_data.present? ? @small_groups_data[0][4] : "no records yet" %></td>
+    <td><%= @small_groups_data.present? ? @small_groups_data[0][5] : "no records yet" %></td>
+    <td><%= @small_groups_data.present? ? @small_groups_data[0][1] : "no records yet" %></td>
+    </tr>
+  </tbody>
+</table>
+
 
 <%= link_to "Previous Week", weekly_stats_path(week_number: @week_number - 1) %>
 <%= link_to "Next Week", weekly_stats_path(week_number: @week_number + 1) %>
