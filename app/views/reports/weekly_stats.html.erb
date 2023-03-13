@@ -61,16 +61,15 @@
   </tbody>
 </table>
 
-<p><%= @week_number  %></p>
-<p><%= @lords_days_data  %></p>
-<p><%= @prayer_meetings_data %></p>
-<p><%= @small_groups_data  %></p>
-<p><%= @small_groups_multi_data  %></p>
-
-<p><%= @current_week_small_groups_data %></p>
 
 <div data-controller="weekly-chart"
+    data-weekly-chart-lords-days-data="<%= @lords_days_data.to_json %>"
+    data-weekly-chart-prayer-meetings-data="<%= @prayer_meetings_data.to_json %>"
+    data-weekly-chart-small-groups-data="<%= @small_groups_data.to_json %>"
     data-weekly-chart-small-groups-multi-data="<%= @small_groups_multi_data.to_json %>">
+    <div id="lords-days"></div>
+    <div id="prayer-meetings"></div>
+    <div id="small-groups"></div>
     <div id="small-group-location"></div>
 </div>
 
