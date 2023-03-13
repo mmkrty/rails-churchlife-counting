@@ -58,6 +58,19 @@ class ReportsController < ApplicationController
                                .transform_values { |instances| instances.sum(&:total) }
                                .group_by { |(week, location), _| location }
                                .map { |location, week_data| [location, week_data.sort_by { |(week, _), _| Date.strptime(week, "%U-%Y") }.map { |(week, _), total| ["Week #{week.split('-').first.to_i}, #{week.split('-').last}", total] }] }
+
+
+   @current_week_small_groups_data = SmallGroup.where(date: @start_date..@end_date)
+                                                .group_by(&:location)
+                                                .transform_values do |small_groups|
+                                                  adults = small_groups.sum(&:adults)
+                                                  teenagers = small_groups.sum(&:teenagers)
+                                                  children = small_groups.sum(&:children)
+                                                  toddlers = small_groups.sum(&:toddlers)
+                                                  total = small_groups.sum(&:total)
+                                                  { adults: adults, teenagers: teenagers, children: children, toddlers: toddlers, total: total }
+                                                end
+
   end
 
   private

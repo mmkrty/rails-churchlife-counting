@@ -43,6 +43,21 @@
     <td><%= @small_groups_this_week ? @small_groups_data[-1][5] : "no records yet" %></td>
     <td><%= @small_groups_this_week ? @small_groups_data[-1][1] : "no records yet" %></td>
     </tr>
+    <tr>
+    <td colspan="6" class="fw-bold text-center">
+      Small Groups
+      </td>
+    </tr>
+    <% @current_week_small_groups_data.each do |location, data| %>
+      <tr>
+        <td><%= location %></td>
+        <td><%= data[:adults] %></td>
+        <td><%= data[:teenagers] %></td>
+        <td><%= data[:children] %></td>
+        <td><%= data[:toddlers] %></td>
+        <td><%= data[:total] %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 
@@ -51,6 +66,8 @@
 <p><%= @prayer_meetings_data %></p>
 <p><%= @small_groups_data  %></p>
 <p><%= @small_groups_multi_data  %></p>
+
+<p><%= @current_week_small_groups_data %></p>
 
 <div data-controller="weekly-chart"
     data-weekly-chart-small-groups-multi-data="<%= @small_groups_multi_data.to_json %>">
