@@ -12,3 +12,6 @@ application.register("hello", HelloController);
 
 import ChartController from "./chart_controller";
 application.register("chart", ChartController);
+
+import WeeklyChartController from "./weekly_chart_controller";
+application.register("weekly-chart", WeeklyChartController);

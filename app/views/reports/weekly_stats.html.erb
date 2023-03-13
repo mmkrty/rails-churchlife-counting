@@ -1,10 +1,11 @@
+
 <%= form_tag weekly_stats_path, method: :get do %>
   <%= label_tag :week_number, "Week Number" %>
   <%= number_field_tag :week_number, params[:week_number] || Date.today.cweek, min: 1, max: 52, step: 1 %>
   <%= submit_tag "View Stats" %>
 <% end %>
 
-<h1>Weekly Stats for Week <%= @week_number %></h1>
+<h1>Weekly Stats for Week <%= @week_number %> (<%= @start_date_string %> ~ <%=  @end_date_string  %>)</h1>
 
 <table  class="table">
   <thead>
@@ -20,30 +21,45 @@
   <tbody>
     <tr>
     <td>Lords Day</td>
-    <td><%= @lords_days_data.present? ? @lords_days_data[0][2] : "no records yet" %></td>
-    <td><%= @lords_days_data.present? ? @lords_days_data[0][3] : "no records yet" %></td>
-    <td><%= @lords_days_data.present? ? @lords_days_data[0][4] : "no records yet" %></td>
-    <td><%= @lords_days_data.present? ? @lords_days_data[0][5] : "no records yet" %></td>
-    <td><%= @lords_days_data.present? ? @lords_days_data[0][1] : "no records yet" %></td>
+    <td><%= @lords_day_this_week ? @lords_days_data[-1][2] : "no records yet" %></td>
+    <td><%= @lords_day_this_week ? @lords_days_data[-1][3] : "no records yet" %></td>
+    <td><%= @lords_day_this_week ? @lords_days_data[-1][4] : "no records yet" %></td>
+    <td><%= @lords_day_this_week ? @lords_days_data[-1][5] : "no records yet" %></td>
+    <td><%= @lords_day_this_week ? @lords_days_data[-1][1] : "no records yet" %></td>
     </tr>
     <tr>
     <td>Prayer Meeting</td>
-    <td><%= @prayer_meetings_data.present? ? @prayer_meetings_data[0][2] : "no records yet" %></td>
-    <td><%= @prayer_meetings_data.present? ? @prayer_meetings_data[0][3] : "no records yet" %></td>
-    <td><%= @prayer_meetings_data.present? ? @prayer_meetings_data[0][4] : "no records yet" %></td>
-    <td><%= @prayer_meetings_data.present? ? @prayer_meetings_data[0][5] : "no records yet" %></td>
-    <td><%= @prayer_meetings_data.present? ? @prayer_meetings_data[0][1] : "no records yet" %></td>
+    <td><%=  @prayer_meeting_this_week ? @prayer_meetings_data[-1][2] : "no records yet" %></td>
+    <td><%= @prayer_meeting_this_week ? @prayer_meetings_data[-1][3] : "no records yet" %></td>
+    <td><%= @prayer_meeting_this_week ? @prayer_meetings_data[-1][4] : "no records yet" %></td>
+    <td><%= @prayer_meeting_this_week ? @prayer_meetings_data[-1][5] : "no records yet" %></td>
+    <td><%= @prayer_meeting_this_week ? @prayer_meetings_data[-1][1] : "no records yet" %></td>
     </tr>
     <tr>
     <td>Small Groups</td>
-    <td><%= @small_groups_data.present? ? @small_groups_data[0][2] : "no records yet" %></td>
-    <td><%= @small_groups_data.present? ? @small_groups_data[0][3] : "no records yet" %></td>
-    <td><%= @small_groups_data.present? ? @small_groups_data[0][4] : "no records yet" %></td>
-    <td><%= @small_groups_data.present? ? @small_groups_data[0][5] : "no records yet" %></td>
-    <td><%= @small_groups_data.present? ? @small_groups_data[0][1] : "no records yet" %></td>
+    <td><%= @small_groups_this_week ? @small_groups_data[-1][2] : "no records yet" %></td>
+    <td><%= @small_groups_this_week ? @small_groups_data[-1][3] : "no records yet" %></td>
+    <td><%= @small_groups_this_week ? @small_groups_data[-1][4] : "no records yet" %></td>
+    <td><%= @small_groups_this_week ? @small_groups_data[-1][5] : "no records yet" %></td>
+    <td><%= @small_groups_this_week ? @small_groups_data[-1][1] : "no records yet" %></td>
     </tr>
   </tbody>
 </table>
+
+<p><%= @week_number  %></p>
+<p><%= @lords_days_data  %></p>
+<p><%= @prayer_meetings_data %></p>
+<p><%= @small_groups_data  %></p>
+<p><%= @small_groups_multi_data  %></p>
+
+<div data-controller="weekly-chart"
+    data-weekly-chart-small-groups-multi-data="<%= @small_groups_multi_data.to_json %>">
+    <div id="small-group-location"></div>
+</div>
+
+
+
+
 
 
 <%= link_to "Previous Week", weekly_stats_path(week_number: @week_number - 1) %>
