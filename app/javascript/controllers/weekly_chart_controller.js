@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["weekly-chart"];
 
   connect() {
-    console.log("connected 11");
+    console.log("connected 12");
     google.charts.load("current", { packages: ["corechart"] });
     google.charts.setOnLoadCallback(this.drawAllCharts.bind(this));
   }
@@ -52,25 +52,12 @@ export default class extends Controller {
     dataTable.addRows(rows);
 
     const options = {
-      title: "Small Groups by Location",
-      titleTextStyle: {
-        fontSize: 18,
-        fontName: "Nunito",
-        color: "#333",
-      },
       hAxis: {
         titleTextStyle: { fontName: "Nunito" },
       },
-      vAxes: [
-        { title: "Total" },
-        {
-          title: "Number of People",
-          titleTextStyle: { color: "#FF0000", fontName: "Nunito" },
-          textStyle: { color: "#FF0000", fontName: "Work Sans" },
-        },
-      ],
       curveType: "function",
-      legend: { position: "right" },
+      legend: { position: "top" },
+      responsive: true,
     };
 
     const chart = new google.visualization.LineChart(
@@ -91,28 +78,8 @@ export default class extends Controller {
     data.addColumn("number", "Toddlers");
     data.addRows(dataset);
 
-    const chartTitle = this.formatChartTitle(chartId);
-
     // Set chart options
     const options = {
-      title: `${chartTitle}`,
-      titleTextStyle: {
-        fontSize: 18,
-        fontName: "Nunito",
-        color: "#333",
-      },
-      hAxis: {
-        title: "Week Number and Year",
-        titleTextStyle: { fontName: "Nunito" },
-      },
-      vAxes: [
-        { title: "Total" },
-        {
-          title: "Number of People",
-          titleTextStyle: { color: "#FF0000", fontName: "Nunito" },
-          textStyle: { color: "#FF0000", fontName: "Work Sans" },
-        },
-      ],
       seriesType: "bars",
       series: {
         0: { type: "line", targetAxisIndex: 0 },
@@ -122,6 +89,8 @@ export default class extends Controller {
         4: { targetAxisIndex: 1 },
       },
       colors: ["#0000FF", "#3366CC", "#DC3912", "#FF9900", "#109418"],
+      responsive: true,
+      legend: { position: "top" },
     };
 
     // Instantiate and draw the chart
