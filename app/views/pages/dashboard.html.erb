@@ -97,6 +97,10 @@
 
         <div class="d-flex">
 
+        <% if ! @lords_days_total_data.empty? %>
+          <%= line_chart  @lords_days_total_data, library: { title: "Lords Days Total" }  %>
+        <% end %>
+
 
 
 
@@ -122,8 +126,8 @@
         <div id="prayer-meetings-chart" class="chart" data-chart-target="chart" style="width: 100%; height: 500px;"></div>
 
         <div class="d-flex">
-        <% if !@prayer_meetings_data.empty? %>
-          <%= line_chart @prayer_meetings_data, library: {hAxis: {title: 'Week', label: 'Week Number and Year'}}  %>
+        <% if !@prayer_meetings_total_data.empty? %>
+          <%= line_chart @prayer_meetings_total_data, library: { title: "Prayer Meetings Total" }  %>
         <% end %>
 
         <% if @lastest_prayer_meetings_pie_chart_data.present? %>
@@ -144,8 +148,8 @@
 
          <div id="small-groups-chart" class="chart" data-chart-target="chart" style="width: 100%; height: 500px;"></div>
         <div class="d-flex">
-        <% if !@small_groups_data.empty? %>
-          <%= line_chart @small_groups_data %>
+        <% if !@small_groups_total_data.empty? %>
+          <%= line_chart @small_groups_total_data, library: { title: "Small Groups Total" } %>
         <% end %>
 
         <% if @lastest_small_groups_pie_chart_data.present? %>

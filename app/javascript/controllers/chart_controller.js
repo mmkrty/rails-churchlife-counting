@@ -6,7 +6,7 @@ export default class extends Controller {
 
   connect() {
     // Load the Visualization API and the corechart package
-    console.log("chart connected");
+    console.log("chart connected 1");
     google.charts.load("current", { packages: ["corechart"] });
     google.charts.setOnLoadCallback(this.drawAllCharts.bind(this));
   }
@@ -36,7 +36,6 @@ export default class extends Controller {
     // Create a data table
     const data = new google.visualization.DataTable();
     data.addColumn("string", "Week");
-    data.addColumn("number", "Total");
     data.addColumn("number", "Adults");
     data.addColumn("number", "Teenagers");
     data.addColumn("number", "Children");
@@ -58,26 +57,18 @@ export default class extends Controller {
         titleTextStyle: { fontName: "Nunito" },
       },
       vAxes: [
-        { title: "Total" },
+        { title: "Number of People" },
         {
-          title: "Number of People",
+          title: "Age Group",
           titleTextStyle: { color: "#FF0000", fontName: "Nunito" },
           textStyle: { color: "#FF0000", fontName: "Work Sans" },
         },
       ],
-      seriesType: "bars",
-      series: {
-        0: { type: "line", targetAxisIndex: 0 },
-        1: { targetAxisIndex: 1 },
-        2: { targetAxisIndex: 1 },
-        3: { targetAxisIndex: 1 },
-        4: { targetAxisIndex: 1 },
-      },
-      colors: ["#0000FF", "#3366CC", "#DC3912", "#FF9900", "#109418"],
+      colors: ["#3366CC", "#DC3912", "#FF9900", "#109418"],
     };
 
     // Instantiate and draw the chart
-    const chart = new google.visualization.ComboChart(
+    const chart = new google.visualization.ColumnChart(
       document.getElementById(chartId)
     );
     chart.draw(data, options);
