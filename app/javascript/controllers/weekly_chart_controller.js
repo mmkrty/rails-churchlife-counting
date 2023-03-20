@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["weekly-chart"];
 
   connect() {
-    console.log("connected 12");
+    console.log("connected 11");
     google.charts.load("current", { packages: ["corechart"] });
     google.charts.setOnLoadCallback(this.drawAllCharts.bind(this));
   }
@@ -82,15 +82,25 @@ export default class extends Controller {
     const options = {
       seriesType: "bars",
       series: {
-        0: { type: "line", targetAxisIndex: 0 },
-        1: { targetAxisIndex: 1 },
-        2: { targetAxisIndex: 1 },
-        3: { targetAxisIndex: 1 },
-        4: { targetAxisIndex: 1 },
+        0: { type: "line" },
+        1: {},
+        2: {},
+        3: {},
+        4: {},
       },
       colors: ["#0000FF", "#3366CC", "#DC3912", "#FF9900", "#109418"],
       responsive: true,
       legend: { position: "top" },
+      vAxes: [
+        {
+          title: "Number of People",
+          titleTextStyle: { fontName: "Nunito" },
+        },
+      ],
+      hAxis: {
+        title: "Week",
+        titleTextStyle: { fontName: "Nunito" },
+      },
     };
 
     // Instantiate and draw the chart
