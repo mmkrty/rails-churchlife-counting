@@ -4,8 +4,20 @@ class PagesController < ApplicationController
   def home
   end
 
-  def dashboard
+  def admin
+    # redirect_to root_path, alert: "You are not authorized to visit admins page" unless current_user.admin?
+    @user = User.new
+  end
+
+  def new_count
+    # render the new count view
     @lords_day = LordsDay.new
+    @prayer_meeting = PrayerMeeting.new
+    @small_group = SmallGroup.new
+  end
+
+  def dashboard
+
     @lords_days = LordsDay.all
     # @lords_days_data = @lords_days.map { |ld| [ld.date, ld.total] }
     @lords_days_total_data = @lords_days.group_by { |ld| ld.date.strftime("%U-%Y") }
@@ -47,7 +59,7 @@ class PagesController < ApplicationController
     ]
 
 
-    @prayer_meeting = PrayerMeeting.new
+
     @prayer_meetings = PrayerMeeting.all
     # @grouped_prayer_meetings = @prayer_meetings.group_by(&:date)
     # @prayer_meetings_data = @grouped_prayer_meetings.map do |date, meetings|
@@ -89,7 +101,7 @@ class PagesController < ApplicationController
       ["Toddlers", (@lastest_prayer_meetings_toddlers /  @lastest_prayer_meetings_total_sum.to_f * 100).round(2)],
     ]
 
-    @small_group = SmallGroup.new
+
     @small_groups = SmallGroup.all
     # @grouped_small_groups = @small_groups.group_by(&:date)
     # @small_groups_data = @grouped_small_groups.map do |date, meetings|
