@@ -30,6 +30,17 @@
             <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password" %>
           </div>
 
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <%= f.radio_button :admin, true, class: "form-check-input" %> Admin
+            </label>
+          </div>
+          <div class="mb-3 form-check">
+            <label class="form-check-label">
+              <%= f.radio_button :admin, false, class: "form-check-input" %> Not Admin
+            </label>
+          </div>
+
           <%= f.submit "Create User", class: "btn btn-primary" %>
         <% end %>
       </div>

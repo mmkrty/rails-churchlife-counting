@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Email</th>
+       <th>Admin</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -9,9 +10,10 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
+         <td><%= user.admin? %></td>
         <td>
           <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-sm btn-primary' %>
-          <%= link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+          <%= link_to 'Delete', user_path(user), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
         </td>
       </tr>
     <% end %>

@@ -1,8 +1,4 @@
-<%= form_for @user do |f| %>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
+<%= form_for @user, url: user_path(@user) do |f| %>
   <div class="form-group">
     <%= f.label :email %>
     <%= f.email_field :email, class: 'form-control' %>
@@ -15,5 +11,18 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, class: 'form-control' %>
   </div>
+
+
+  <div class="mb-3 form-check">
+    <label class="form-check-label">
+      <%= f.radio_button :admin, true, class: "form-check-input" %> Admin
+    </label>
+  </div>
+  <div class="mb-3 form-check">
+    <label class="form-check-label">
+      <%= f.radio_button :admin, false, class: "form-check-input" %> Not Admin
+    </label>
+  </div>
+
   <%= f.submit 'Update', class: 'btn btn-primary' %>
 <% end %>
