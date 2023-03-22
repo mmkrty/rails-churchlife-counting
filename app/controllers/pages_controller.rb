@@ -17,7 +17,6 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-
     @lords_days = LordsDay.all
     # @lords_days_data = @lords_days.map { |ld| [ld.date, ld.total] }
     @lords_days_total_data = @lords_days.group_by { |ld| ld.date.strftime("%U-%Y") }

@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 class ReportsController < ApplicationController
   def weekly_stats
     # @week_number = params[:week_number].to_i || Date.today.cweek
@@ -71,6 +73,27 @@ class ReportsController < ApplicationController
                                                   { adults: adults, teenagers: teenagers, children: children, toddlers: toddlers, total: total }
                                                 end
 
+  end
+
+  def send_weekly_stats_email
+
+    User.all.each do |user|
+      html = render_to_string(partial: 'reports/weekly_stats', layout: false, locals: {
+        week_number: @week_number,
+        start_date_string: @start_date_string,
+        lords_day_this_week: @lords_day_this_week,
+        lords_days_data: @lords_days_data,
+        prayer_meeting_this_week: @prayer_meeting_this_week,
+        prayer_meetings_data: @prayer_meetings_data,
+        small_groups_this_week: @small_groups_this_week,
+        small_groups_data: @small_groups_data,
+        small_groups_multi_data: @small_groups_multi_data,
+        current_week_small_groups_data: @current_week_small_groups_data })
+      doc = Nokogiri::HTML(html)
+      content = doc.css('#weeklyStats').to_html
+      ApplicationMailer.send_weekly_stats_email(user, @week_number, content).deliver_now
+    end
+    redirect_to reports_path, notice: 'Weekly stats emailed to all users successfully'
   end
 
   private

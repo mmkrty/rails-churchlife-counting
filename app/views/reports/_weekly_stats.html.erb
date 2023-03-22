@@ -1,0 +1,94 @@
+<div id="weeklyStats">
+
+
+  <h1 class="my-4">Weekly Stats for Week <%= @week_number %> (<%= @start_date_string %> ~ <%=  @end_date_string  %>)</h1>
+
+  <table  class="table">
+    <thead>
+      <tr>
+      <th>Meeting</th>
+      <th>Adults</th>
+      <th>Teenagers</th>
+      <th>Children</th>
+      <th>Toddlers</th>
+      <th>Total</th>
+          </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <td>Lords Day</td>
+      <td><%= @lords_day_this_week ? @lords_days_data[-1][2] : "no records yet" %></td>
+      <td><%= @lords_day_this_week ? @lords_days_data[-1][3] : "no records yet" %></td>
+      <td><%= @lords_day_this_week ? @lords_days_data[-1][4] : "no records yet" %></td>
+      <td><%= @lords_day_this_week ? @lords_days_data[-1][5] : "no records yet" %></td>
+      <td><%= @lords_day_this_week ? @lords_days_data[-1][1] : "no records yet" %></td>
+      </tr>
+      <tr>
+      <td>Prayer Meeting</td>
+      <td><%=  @prayer_meeting_this_week ? @prayer_meetings_data[-1][2] : "no records yet" %></td>
+      <td><%= @prayer_meeting_this_week ? @prayer_meetings_data[-1][3] : "no records yet" %></td>
+      <td><%= @prayer_meeting_this_week ? @prayer_meetings_data[-1][4] : "no records yet" %></td>
+      <td><%= @prayer_meeting_this_week ? @prayer_meetings_data[-1][5] : "no records yet" %></td>
+      <td><%= @prayer_meeting_this_week ? @prayer_meetings_data[-1][1] : "no records yet" %></td>
+      </tr>
+      <tr>
+      <td>Small Groups</td>
+      <td><%= @small_groups_this_week ? @small_groups_data[-1][2] : "no records yet" %></td>
+      <td><%= @small_groups_this_week ? @small_groups_data[-1][3] : "no records yet" %></td>
+      <td><%= @small_groups_this_week ? @small_groups_data[-1][4] : "no records yet" %></td>
+      <td><%= @small_groups_this_week ? @small_groups_data[-1][5] : "no records yet" %></td>
+      <td><%= @small_groups_this_week ? @small_groups_data[-1][1] : "no records yet" %></td>
+      </tr>
+      <tr>
+      <% if !@current_week_small_groups_data.nil? %>
+        <td colspan="6" class="fw-bold text-center">
+          Small Groups
+          </td>
+        </tr>
+        <% @current_week_small_groups_data.each do |location, data| %>
+          <tr>
+            <td><%= location %></td>
+            <td><%= data[:adults] %></td>
+            <td><%= data[:teenagers] %></td>
+            <td><%= data[:children] %></td>
+            <td><%= data[:toddlers] %></td>
+            <td><%= data[:total] %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  <div class="bg-white my-4"
+      data-controller="weekly-chart"
+      data-weekly-chart-lords-days-data="<%= @lords_days_data.to_json %>"
+      data-weekly-chart-prayer-meetings-data="<%= @prayer_meetings_data.to_json %>"
+      data-weekly-chart-small-groups-data="<%= @small_groups_data.to_json %>"
+      data-weekly-chart-small-groups-multi-data="<%= @small_groups_multi_data.to_json %>">
+      <div class="d-flex  py-2">
+        <div class="w-100">
+          <h2 class="text-center">Lords Days</h2>
+          <div id="lords-days" class="w-100"></div>
+        </div>
+        <div class="w-100">
+          <h2 class="text-center">Prayer Meetings</h2>
+          <div id="prayer-meetings" class="w-100"></div>
+        </div>
+      </div>
+
+      <div class="d-flex py-2">
+        <div class="w-100">
+          <h2 class="text-center">Small Groups</h2>
+          <div id="small-groups" class="w-100"></div>
+        </div>
+        <div class="w-100">
+          <h2 class="text-center">Small Groups by Location</h2>
+          <div id="small-group-location" class="w-100"></div>
+        </div>
+      </div>
+
+  </div>
+
+
+</div>

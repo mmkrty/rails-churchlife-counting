@@ -77,6 +77,8 @@ group :test do
   gem "webdrivers"
 end
 
+gem 'nokogiri'
+
 # For charts
 gem "chartkick"
 gem "groupdate"

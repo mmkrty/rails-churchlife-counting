@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   resources :prayer_meetings
   resources :small_groups
 
+  resources :reports do
+    post :send_weekly_stats_email, on: :collection
+  end
 end
