@@ -44,6 +44,9 @@ RUN npm install -g yarn@$YARN_VERSION
 # Build options
 ENV PATH="/usr/local/node/bin:$PATH"
 
+ARG RAILS_ENV=production
+ENV RAILS_ENV=$RAILS_ENV
+
 # Install application gems
 COPY --link Gemfile Gemfile.lock ./
 RUN bundle install && \
@@ -60,8 +63,11 @@ COPY --link . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
+# Set the environment variable for the secret key
+ENV SECRET_KEY_BASE=aad1a2aa52e273d6751673e15188a3dcec94be8aae4e92eac80a41c3b89ac9c0204af7de184bef26206f151b010c598852195ffdfcfac0d6f11b9f6c50656f0f
+
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
+RUN SECRET_KEY_BASE=$SECRET_KEY_BASE ./bin/rails assets:precompile
 
 
 # Final stage for app image
@@ -69,7 +75,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y postgresql-client && \
+    apt-get install --no-install-recommends -y libsqlite3-dev sqlite3 && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Run and own the application files as a non-root user for security

@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    environment:
+      RAILS_ENV: production
+    command: >
+      sh -c '
+        bundle exec rails db:migrate &&
+        SECRET_KEY_BASE=aad1a2aa52e273d6751673e15188a3dcec94be8aae4e92eac80a41c3b89ac9c0204af7de184bef26206f151b010c598852195ffdfcfac0d6f11b9f6c50656f0f bundle exec rails server -p 3000 -b 0.0.0.0
+      '
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - rails-db:/app/db
+    env_file: .env
+
+volumes:
+  rails-db:
