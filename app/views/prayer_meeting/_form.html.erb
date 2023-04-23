@@ -1,9 +1,8 @@
 <%= simple_form_for @prayer_meeting, data: { controller: 'flatpickr' } do |f| %>
   <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "date" }}, required: true %>
-  <%= f.input :location, as: :select, collection: [['meeting hall','meeting hall'], ['sounthwest','sounthwest'],['west','west'],['east','east']], required: true %>
+  <%= f.input :location, as: :select, collection: [['eeting hall','meeting hall'], ['sounthwest','sounthwest'],['charlottenburg & mitte','charlottenburg & mitte'],['east','east']], required: true %>
   <%= f.input :adults %>
   <%= f.input :teenagers %>
   <%= f.input :children %>
-  <%= f.input :toddlers %>
   <%= f.submit class: 'button button-primary' %>
 <% end %>

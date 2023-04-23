@@ -1,9 +1,8 @@
   <%= simple_form_for @small_group, data: { controller: 'flatpickr' } do |f| %>
     <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "date" }}, required: true %>
-    <%= f.input :location, as: :select, collection: [['Friednau','Friednau'], ['Pans & Barths','Pans & Barths'], ['Tsays & Favors','Tsays & Favors'], ['Moralas & Fomins & Lins','Moralas & Fomins & Lins'], ['Wangs & Gebreselassies','Wangs & Gebreselassies'],['Xies & Brother & Sister house','Xies & Brother & Sister house'],['Farsi speaking','Farsi speaking'],['Russian speaking','Russian speaking']], required: true %>
+    <%= f.input :location, as: :select, collection: [['Friedenau I (Lius & Amerkhanians & Yangs)','Friedenau I (Lius & Amerkhanians & Yangs)'], ['Friedenau II (Lius & Lokes)','Friedenau II (Lius & Lokes)'], ['Pans & Barths','Pans & Barths'], ['Tsays & Favors','Tsays & Favors'], ['Morales & Thompsons & Lees','Morales & Thompsons & Lees'],['Lins & Fomins & Wangs','Lins & Fomins & Wangs'],['East side - Chens & Farsi','East side - Chens & Farsi'],['Russian speaking','Russian speaking']], required: true %>
     <%= f.input :adults %>
     <%= f.input :teenagers %>
     <%= f.input :children %>
-    <%= f.input :toddlers %>
     <%= f.submit class: 'button button-primary' %>
   <% end %>
