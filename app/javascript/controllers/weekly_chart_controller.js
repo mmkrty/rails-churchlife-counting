@@ -75,7 +75,6 @@ export default class extends Controller {
     data.addColumn("number", "Adults");
     data.addColumn("number", "Teenagers");
     data.addColumn("number", "Children");
-    data.addColumn("number", "Toddlers");
     data.addRows(dataset);
 
     // Set chart options
@@ -88,7 +87,7 @@ export default class extends Controller {
         3: {},
         4: {},
       },
-      colors: ["#0000FF", "#3366CC", "#DC3912", "#FF9900", "#109418"],
+      colors: ["#0000FF", "#3366CC", "#DC3912", "#FF9900"],
       responsive: true,
       legend: { position: "top" },
       vAxes: [

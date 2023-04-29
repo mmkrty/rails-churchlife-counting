@@ -39,7 +39,6 @@ export default class extends Controller {
     data.addColumn("number", "Adults");
     data.addColumn("number", "Teenagers");
     data.addColumn("number", "Children");
-    data.addColumn("number", "Toddlers");
     data.addRows(dataset);
 
     const chartTitle = this.formatChartTitle(chartId);
@@ -64,7 +63,7 @@ export default class extends Controller {
           textStyle: { color: "#FF0000", fontName: "Work Sans" },
         },
       ],
-      colors: ["#3366CC", "#DC3912", "#FF9900", "#109418"],
+      colors: ["#3366CC", "#DC3912", "#FF9900"],
     };
 
     // Instantiate and draw the chart
