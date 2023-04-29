@@ -6,7 +6,7 @@ class LordsDay < ApplicationRecord
   private
 
   def calculate_total
-    self.total = adults + teenagers + children + toddlers
+    self.total = adults + teenagers + children
   end
 
   def validate_date_is_sunday

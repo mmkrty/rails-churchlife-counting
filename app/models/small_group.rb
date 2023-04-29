@@ -5,6 +5,6 @@ class SmallGroup < ApplicationRecord
   private
 
   def calculate_total
-    self.total = adults + teenagers + children + toddlers
+    self.total = adults + teenagers + children
   end
 end

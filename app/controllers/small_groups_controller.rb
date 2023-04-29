@@ -38,6 +38,6 @@ class SmallGroupsController < ApplicationController
   private
 
   def small_group_params
-    params.require(:small_group).permit(:date, :location, :adults, :teenagers, :children, :toddlers)
+    params.require(:small_group).permit(:date, :location, :adults, :teenagers, :children)
   end
 end

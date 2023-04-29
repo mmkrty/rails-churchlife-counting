@@ -39,6 +39,6 @@ class PrayerMeetingsController < ApplicationController
   private
 
   def prayer_meeting_params
-    params.require(:prayer_meeting).permit(:date, :location, :adults, :teenagers, :children, :toddlers)
+    params.require(:prayer_meeting).permit(:date, :location, :adults, :teenagers, :children)
   end
 end
